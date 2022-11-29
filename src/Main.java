@@ -89,6 +89,9 @@ public class Main {
         porsche.maxSpeed();
         MAN.bestLapTime();
         maz.maxSpeed();
+        porsche.pitStop();
+        lexus.pitStop();
+        maz.pitStop();
     }
 public static void printCar(){
     System.out.println("==========================");
