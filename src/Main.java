@@ -1,6 +1,4 @@
-import carRase.Buses;
-import carRase.PassengerCars;
-import carRase.Trucks;
+import carRase.*;
 import drivers.DriverB;
 import drivers.DriverC;
 import drivers.DriverD;
@@ -8,20 +6,20 @@ import drivers.DriverD;
 public class Main {
     public static void main(String[] args) {
 
-        PassengerCars lexus = new PassengerCars("Lexus","LX 570", 4.5f);
-        PassengerCars porsche = new PassengerCars("Porsche","989", 5.2f);
-        PassengerCars BMW = new PassengerCars("BMW","X7", 5.5f);
-        PassengerCars audi = new PassengerCars("Audi","Q8", 3.8f);
+        PassengerCars lexus = new PassengerCars("Lexus","LX 570", 4.5f, BodyType.CROSSOVER);
+        PassengerCars porsche = new PassengerCars("Porsche","989", 5.2f, null);
+        PassengerCars BMW = new PassengerCars("BMW","X7", 5.5f, BodyType.JEEP);
+        PassengerCars audi = new PassengerCars("Audi","Q8", 3.8f, BodyType.CROSSOVER);
 
-        Buses MAN = new Buses("МАН","Lion",4.7f);
-        Buses maz = new Buses("МАЗ","232",5.6f);
-        Buses hyundai = new Buses("Hyundai","H350",4.2f);
-        Buses volvo = new Buses("Volvo","9500",3.9f);
+        Buses MAN = new Buses("МАН","Lion",4.7f, Capacity.AVERAGE);
+        Buses maz = new Buses("МАЗ","232",5.6f,Capacity.ESPECIALLY_BIG);
+        Buses hyundai = new Buses("Hyundai","H350",4.2f,null);
+        Buses volvo = new Buses("Volvo","9500",3.9f,Capacity.ESPECIALLY_SMALL);
 
-        Trucks kamAz = new Trucks("КамАз","6520",4.0f);
-        Trucks iveco = new Trucks("Iveco","Daily",2.0f);
-        Trucks daf = new Trucks("Daf","XE", 5.0f);
-        Trucks isuzu = new Trucks("Isuzu","Elf",3.0f);
+        Trucks kamAz = new Trucks("КамАз","6520",4.0f, Weight.N1);
+        Trucks iveco = new Trucks("Iveco","Daily",2.0f, null);
+        Trucks daf = new Trucks("Daf","XE", 5.0f, Weight.N3);
+        Trucks isuzu = new Trucks("Isuzu","Elf",3.0f, Weight.N2);
 
         DriverB<PassengerCars> ivanov=new DriverB<>("Иванов Иван Иванович",true,12);
         DriverB<PassengerCars> sergeev=new DriverB<>("Сергеев Сергей Сергеевич",true,22);
@@ -92,6 +90,20 @@ public class Main {
         porsche.pitStop();
         lexus.pitStop();
         maz.pitStop();
+        printCar();
+        audi.printType();
+        daf.printType();
+        isuzu.printType();
+        iveco.printType();
+        hyundai.printType();
+        kamAz.printType();
+        volvo.printType();
+        MAN.printType();
+        maz.printType();
+        porsche.printType();
+        lexus.printType();
+        maz.printType();
+
     }
 public static void printCar(){
     System.out.println("==========================");

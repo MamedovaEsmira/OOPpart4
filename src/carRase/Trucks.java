@@ -1,6 +1,20 @@
 package carRase;
 
 public class Trucks extends Transport {
+
+    private Weight weight;
+
+    public Trucks(String brand, String model, float engineVolume, Weight weight) {
+        super(brand, model, engineVolume);
+        this.weight = weight;
+    }
+      public Weight getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Weight weight) {
+        this.weight = weight;
+    }
     @Override
     public void startMove() {
         System.out.printf("Грузовой автомобиль:  %s %s начинает движение. \n", getBrand(), getModel());
@@ -10,9 +24,18 @@ public class Trucks extends Transport {
         System.out.printf("Грузовой автомобиль:  %s %s заканчивает движение. \n", getBrand(), getModel());
 
     }
-    public Trucks(String brand, String model, float engineVolume) {
-        super(brand, model, engineVolume);
+
+    @Override
+    public void printType() {
+        if (weight == null) {
+            System.out.println("Данных по авто недостаточно");
+        }else {
+            String from= weight.getFrom()==null? " ": "от "+weight.getFrom()+" тонн ";
+            String to= weight.getTo()==null? " ": "до "+weight.getTo()+" тонн ";
+            System.out.println("Тип грузоподьемности авто: "+ from+to);
+        }
     }
+
     @Override
     public String toString() {
         return String.format("Класс: %s, марка: %s, модель: %s, мощность двигателя: %.1f л.",
@@ -34,4 +57,6 @@ public class Trucks extends Transport {
     public void maxSpeed() {
         System.out.printf("Максимальная скорость грузовика  %s %s составила: %.1f км/ч.\n", getBrand(), getModel(), (100 + Math.random() * (150)));
     }
+
+
 }

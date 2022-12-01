@@ -18,7 +18,7 @@ public abstract class Transport implements Competing {
     public abstract void startMove();
 
     public abstract void stopMove();
-
+    public abstract void printType();
     public Transport(String brand, String model, float engineVolume) {
         this.model = validateStringParameters(model);
         this.brand = validateStringParameters(brand);

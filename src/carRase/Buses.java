@@ -1,6 +1,20 @@
 package carRase;
  public class Buses extends Transport {
 
+     private Capacity capacity;
+
+     public Buses(String brand, String model, float engineVolume, Capacity capacity) {
+         super(brand, model, engineVolume);
+         this.capacity = capacity;
+     }
+
+     public Capacity getCapacity() {
+         return capacity;
+     }
+
+     public void setCapacity(Capacity capacity) {
+         this.capacity = capacity;
+     }
      @Override
      public void startMove() {
          System.out.printf("Автобус: %s %s начинает движение. \n",getBrand(),getModel());
@@ -11,9 +25,15 @@ package carRase;
          System.out.printf("Автобус: %s %s заканчивает движение. \n",getBrand(),getModel());
      }
 
-     public Buses(String brand, String model, float engineVolume) {
-            super(brand, model,engineVolume);
-        }
+     @Override
+     public void printType() {
+         if (capacity == null) {
+             System.out.println("Данных по авто недостаточно");
+         } else {
+             System.out.println("Тип вместимости автобуса: от " + capacity.getFrom()+ " до "+capacity.getTo() +" мест");
+         }
+     }
+
      @Override
      public String toString() {
          return String.format("Класс: %s, марка: %s, модель: %s, мощность двигателя: %.1f л.", Buses.class.getSimpleName(), getBrand(), getModel(), getEngineVolume());

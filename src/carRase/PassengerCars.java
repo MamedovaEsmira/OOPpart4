@@ -2,6 +2,21 @@ package carRase;
 
 public class PassengerCars extends Transport{
 
+    private BodyType bodyType;
+
+    public PassengerCars(String brand, String model, float engineVolume, BodyType bodyType) {
+        super(brand, model, engineVolume);
+        this.bodyType = bodyType;
+    }
+
+    public BodyType getBodyType() {
+        return bodyType;
+    }
+
+    public void setBodyType(BodyType bodyType) {
+        this.bodyType = bodyType;
+    }
+
     @Override
     public void startMove() {
         System.out.printf("Легковой автомобиль:  %s %s начинает движение. \n", getBrand(), getModel());
@@ -11,9 +26,16 @@ public class PassengerCars extends Transport{
         System.out.printf("Легковой автомобиль:  %s %s заканчивает движение. \n", getBrand(), getModel());
 
     }
-    public PassengerCars(String brand, String model, float engineVolume) {
-        super(brand, model, engineVolume);
+
+    @Override
+    public void printType() {
+        if (bodyType == null) {
+            System.out.println("Данных по авто недостаточно");
+        }else {
+            System.out.println("Тип кузова авто: "+ bodyType);
+        }
     }
+
     @Override
     public String toString() {
         return String.format("Класс: %s , марка: %s, модель: %s, мощность двигателя: %.1f л.", PassengerCars.class.getSimpleName(), getBrand(), getModel(), getEngineVolume());
