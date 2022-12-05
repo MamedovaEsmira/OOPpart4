@@ -4,7 +4,7 @@ import carRase.PassengerCars;
 
 public class DriverB<B extends PassengerCars> extends Drivers {
 
-    public DriverB(String fullname, boolean driversLicense, int experience) {
+    public DriverB(String fullname, String driversLicense, int experience) {
         super(fullname, driversLicense, experience);
     }
 

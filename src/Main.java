@@ -2,6 +2,7 @@ import carRase.*;
 import drivers.DriverB;
 import drivers.DriverC;
 import drivers.DriverD;
+import exception.Data;
 
 public class Main {
     public static void main(String[] args) {
@@ -21,14 +22,14 @@ public class Main {
         Trucks daf = new Trucks("Daf","XE", 5.0f, Weight.N3);
         Trucks isuzu = new Trucks("Isuzu","Elf",3.0f, Weight.N2);
 
-        DriverB<PassengerCars> ivanov=new DriverB<>("Иванов Иван Иванович",true,12);
-        DriverB<PassengerCars> sergeev=new DriverB<>("Сергеев Сергей Сергеевич",true,22);
+        DriverB<PassengerCars> ivanov=new DriverB<>("Иванов Иван Иванович","yes",12);
+        DriverB<PassengerCars> sergeev=new DriverB<>("Сергеев Сергей Сергеевич","yes",22);
 
-        DriverC<Trucks> nikulin=new DriverC<>("Никулин Иван Петрович",true,8);
-        DriverC<Trucks> vasilyev=new DriverC<>("Васильев Василий Васильевич",false,15);
+        DriverC<Trucks> nikulin=new DriverC<>("Никулин Иван Петрович","no",8);
+        DriverC<Trucks> vasilyev=new DriverC<>("Васильев Василий Васильевич","yes",15);
 
-        DriverD<Buses> nosov=new DriverD<>("Носов Сергей Васильевич",true,6);
-        DriverD<Buses> petrov=new DriverD<>("Петров Василий Иванович",false,16);
+        DriverD<Buses> nosov=new DriverD<>("Носов Сергей Васильевич","yes",6);
+        DriverD<Buses> petrov=new DriverD<>("Петров Василий Иванович","no",16);
 
         System.out.println(lexus);
         System.out.println(porsche);
@@ -103,9 +104,29 @@ public class Main {
         porsche.printType();
         lexus.printType();
         maz.printType();
-
+        printCar();
+        boolean success= Data.validate("test!","test","test");
+        if(success){
+            System.out.println("Данные валидны");
+        }else {
+            System.out.println("Данные не валидны");
+        }
+        printCar();
+        service(audi, daf, isuzu, iveco, hyundai, kamAz, volvo,
+        MAN, maz, porsche, lexus, maz);
     }
+
 public static void printCar(){
     System.out.println("==========================");
 }
+    public static void service(Transport... transports) {
+        for (Transport transport : transports) {
+            try {
+                if (!transport.service())
+                    throw new RuntimeException();
+            } catch (RuntimeException e) {
+                System.out.println(transport.getClass().getSimpleName() + " " + transport.getBrand() + " " + transport.getModel() + " необходимо пройти диагностику.");
+            }
+        }
+    }
 }

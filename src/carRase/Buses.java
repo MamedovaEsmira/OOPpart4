@@ -40,6 +40,12 @@ package carRase;
      }
 
      @Override
+     public boolean service() {
+         System.out.println("Автобус " +getBrand() + "" + getModel() + " не нуждается в диагностике");
+         return true;
+     }
+
+     @Override
      public void pitStop() {
          System.out.printf("Автобус %s %s заезжает на Pit-stop.", getBrand(), getModel());
          System.out.printf("\nАвтобус %s %s прошел обслуживание, выезжает из Pit-stop.\n", getBrand(), getModel());

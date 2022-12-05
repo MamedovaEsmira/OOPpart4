@@ -2,7 +2,7 @@ package drivers;
 import carRase.Trucks;
 
 public class DriverC<C extends Trucks> extends Drivers {
-    public DriverC(String fullname, boolean driversLicense, int experience) {
+    public DriverC(String fullname, String driversLicense, int experience) {
         super(fullname, driversLicense, experience);
     }
 

@@ -3,7 +3,7 @@ package carRase;
 public class PassengerCars extends Transport{
 
     private BodyType bodyType;
-
+    private boolean service;
     public PassengerCars(String brand, String model, float engineVolume, BodyType bodyType) {
         super(brand, model, engineVolume);
         this.bodyType = bodyType;
@@ -25,6 +25,15 @@ public class PassengerCars extends Transport{
     public void stopMove() {
         System.out.printf("Легковой автомобиль:  %s %s заканчивает движение. \n", getBrand(), getModel());
 
+    }
+    @Override
+    public boolean service() {
+        if (service) {
+            System.out.println("Автомобиль " + getBrand() + " " + getModel() + " прошел диагностику.");
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override

@@ -3,7 +3,7 @@ package carRase;
 public class Trucks extends Transport {
 
     private Weight weight;
-
+    private boolean service;
     public Trucks(String brand, String model, float engineVolume, Weight weight) {
         super(brand, model, engineVolume);
         this.weight = weight;
@@ -40,6 +40,16 @@ public class Trucks extends Transport {
     public String toString() {
         return String.format("Класс: %s, марка: %s, модель: %s, мощность двигателя: %.1f л.",
                 Trucks.class.getSimpleName(), getBrand(), getModel(), getEngineVolume());
+    }
+
+    @Override
+    public boolean service() {
+        if (service) {
+            System.out.println("Грузовой автомобиль: " + getBrand() + " " + getModel() + " прошел диагностику.");
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
