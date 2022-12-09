@@ -1,11 +1,20 @@
 package carRase;
 
-import java.util.Objects;
+import collections.Mechanic;
+import collections.Sponsor;
+import drivers.Drivers;
+
+import java.util.*;
 
 public abstract class Transport implements Competing {
     private final String brand;
     private final String model;
     private float engineVolume;
+
+    private final List<Drivers<?>> drivers = new ArrayList<>();
+    private final List<Mechanic<?>> mechanics = new ArrayList<>();
+    private final List<Sponsor<?>> sponsors = new ArrayList<>();
+
 
     public String validateStringParameters(String value) {
         return value == null || value.isBlank() || value.isEmpty() ? "default" : value;
@@ -14,12 +23,6 @@ public abstract class Transport implements Competing {
     public float validateFloatParameters(float value) {
         return value == 0f ? 1.5f : Math.abs(value);
     }
-
-    public abstract void startMove();
-
-    public abstract void stopMove();
-
-    public abstract void printType();
 
     public Transport(String brand, String model, float engineVolume) {
         this.model = validateStringParameters(model);
@@ -43,6 +46,30 @@ public abstract class Transport implements Competing {
         this.engineVolume = engineVolume;
     }
 
+    public void addDriver(Drivers<?> drivers) {
+        this.drivers.addAll(Arrays.asList(drivers));
+    }
+
+    public void addMechanic(Mechanic<?>... mechanics) {
+        this.mechanics.addAll(Arrays.asList(mechanics));
+    }
+
+    public void addSponsor(Sponsor<?>... sponsors) {
+        this.sponsors.addAll(Arrays.asList(sponsors));
+    }
+
+    public List<Drivers<?>> getDrivers() {
+        return drivers;
+    }
+
+    public List<Sponsor<?>> getSponsors() {
+        return sponsors;
+    }
+
+    public List<Mechanic<?>> getMechanics() {
+        return mechanics;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -61,8 +88,15 @@ public abstract class Transport implements Competing {
         return "Transport{" + "brand='" + brand + '\'' + ", model='" + model + '\'' + ", engineVolume=" + engineVolume + '}';
     }
 
+    public abstract void startMove();
+
+    public abstract void stopMove();
+
+    public abstract void printType();
+
     public abstract boolean service();
 
+    public abstract void repair();
 }
 
 

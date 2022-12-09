@@ -36,6 +36,13 @@ public class PassengerCars extends Transport{
         }
     }
 
+
+    @Override
+    public void repair() {
+        System.out.println("Автомобиль "+getBrand() +" "+getModel()+" починена!");
+    }
+
+
     @Override
     public void printType() {
         if (bodyType == null) {

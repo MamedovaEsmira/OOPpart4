@@ -1,9 +1,14 @@
 package drivers;
 
-public abstract class Drivers {
+import category.Category;
+
+public abstract class Drivers<C extends Category> {
   private String fullname;       // ФИО водителя
   private String driversLicense;//наличие водительских прав
   private int experience;        //стаж водителя
+  private C category;
+
+
   public String validateStringParametrs(String value) {
     return value == null || value.isBlank() || value.isEmpty() ? "Васильев Петр Сергеевич" : value;
   }
@@ -12,10 +17,11 @@ public abstract class Drivers {
     return value <= 0 ? 1 : Math.abs(value);
   }
 
-  public Drivers(String fullname, String driversLicense, int experience) {
+  public Drivers(String fullname, String driversLicense, int experience,C category) {
     this.fullname = validateStringParametrs(fullname);
     this.driversLicense = driversLicense;
     this.experience = validateIntParametrs(experience);
+    this.category = category;
 
   }
 
@@ -60,8 +66,29 @@ public abstract class Drivers {
     this.experience = experience;
   }
 
+  public String getDriversLicense() {
+    return driversLicense;
+  }
+
+  public C getCategory() {
+    return category;
+  }
+
+  public void setCategory(C category) {
+    this.category = category;
+  }
+
+  public void setDriversLicense(String driversLicense) {
+    this.driversLicense = driversLicense;
+  }
+
   @Override
   public String toString() {
-    return String.format("Водитель: %s со стажем вождения %d лет. Наличие прав: %s  будет учавствовать в заезде. \n",getFullname(),getExperience(),getDriverLicense());
+    return String.format("Водитель: %s со стажем вождения %d лет. Права категории: %s  будет учавствовать в заезде. \n",getFullname(),getExperience(),getCategory());
+  }
+
+  public abstract void addDrivers(Drivers<?> driver);
+
+  public void add(Drivers<?> driver) {
   }
 }

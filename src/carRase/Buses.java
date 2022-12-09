@@ -46,6 +46,11 @@ package carRase;
      }
 
      @Override
+     public void repair() {
+         System.out.println("Автобус "+getBrand()+" " +getModel()+" починена!");
+     }
+
+     @Override
      public void pitStop() {
          System.out.printf("Автобус %s %s заезжает на Pit-stop.", getBrand(), getModel());
          System.out.printf("\nАвтобус %s %s прошел обслуживание, выезжает из Pit-stop.\n", getBrand(), getModel());

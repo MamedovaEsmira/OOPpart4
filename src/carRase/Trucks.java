@@ -52,6 +52,13 @@ public class Trucks extends Transport {
         }
     }
 
+
+    @Override
+    public void repair() {
+        System.out.println("Грузовик "+getBrand()+" " +getModel()+" починен!");
+    }
+
+
     @Override
     public void pitStop() {
         System.out.printf("Грузовой автомобиль: марка: %s, модель: %s,  заезжает на Pit-Stop",  getBrand(), getModel());
