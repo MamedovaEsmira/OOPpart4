@@ -1,11 +1,11 @@
 package drivers;
-
 import carRase.Buses;
-import carRase.PassengerCars;
+import carRase.Transport;
+import category.Category;
 
-public class DriverD<D extends Buses> extends Drivers {
-    public DriverD(String fullname, String driversLicense, int experience) {
-        super(fullname, driversLicense, experience);
+public class DriverD<D extends Buses, T extends Transport, C extends Category> extends Drivers<C> {
+    public DriverD(String fullname, String driversLicense, int experience, C category ) {
+        super(fullname, driversLicense, experience, category);
     }
 
     @Override
@@ -25,6 +25,12 @@ public class DriverD<D extends Buses> extends Drivers {
         System.out.printf("Водитель автобуса %s заправляет автобус \n",getFullname());
 
     }
+
+    @Override
+    public void addDrivers(Drivers<?> driver) {
+
+    }
+
     public void driverD(D Buses) {
         System.out.printf("Водитель %s, управляет автобусом %s %s и будет участвовать в заезде.\n", getFullname(), Buses.getBrand(), Buses.getModel());
     }
