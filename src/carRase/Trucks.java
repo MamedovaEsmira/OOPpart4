@@ -1,5 +1,7 @@
 package carRase;
 
+import java.util.Objects;
+
 public class Trucks extends Transport {
 
     private Weight weight;
@@ -75,5 +77,17 @@ public class Trucks extends Transport {
         System.out.printf("Максимальная скорость грузовика  %s %s составила: %.1f км/ч.\n", getBrand(), getModel(), (100 + Math.random() * (150)));
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Trucks trucks = (Trucks) o;
+        return service == trucks.service && weight == trucks.weight;
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), weight, service);
+    }
 }
