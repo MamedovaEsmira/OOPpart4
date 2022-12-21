@@ -2,6 +2,8 @@ package collections;
 
 import carRase.Transport;
 
+import java.util.Objects;
+
 public class Mechanic<T extends Transport> {
     private final String nameMechanic;
     private final String surname;
@@ -34,5 +36,18 @@ public class Mechanic<T extends Transport> {
     @Override
     public String toString() {
         return nameMechanic + " " + surname  + " работает в компании " + company;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Mechanic<?> mechanic = (Mechanic<?>) o;
+        return Objects.equals(nameMechanic, mechanic.nameMechanic) && Objects.equals(surname, mechanic.surname) && Objects.equals(company, mechanic.company);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nameMechanic, surname, company);
     }
 }

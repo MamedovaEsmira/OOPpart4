@@ -1,5 +1,8 @@
 package carRase;
- public class Buses extends Transport {
+
+import java.util.Objects;
+
+public class Buses extends Transport {
 
      private Capacity capacity;
 
@@ -65,4 +68,18 @@ package carRase;
      public void maxSpeed() {
          System.out.printf("Максимальная скорость Автобуса  %s %s  составила: %.1f км/ч.\n", getBrand(), getModel(), (100 + Math.random() * 180));
      }
- }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Buses buses = (Buses) o;
+        return capacity == buses.capacity;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), capacity);
+    }
+}

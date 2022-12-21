@@ -11,9 +11,9 @@ public abstract class Transport implements Competing {
     private final String model;
     private float engineVolume;
 
-    private final List<Drivers<?>> drivers = new ArrayList<>();
-    private final List<Mechanic<?>> mechanics = new ArrayList<>();
-    private final List<Sponsor<?>> sponsors = new ArrayList<>();
+    private final Set<Drivers<?>> drivers = new HashSet<>();
+    private final Set<Mechanic<?>> mechanics = new HashSet<>();
+    private final Set<Sponsor<?>> sponsors = new HashSet<>();
 
 
     public String validateStringParameters(String value) {
@@ -58,15 +58,15 @@ public abstract class Transport implements Competing {
         this.sponsors.addAll(Arrays.asList(sponsors));
     }
 
-    public List<Drivers<?>> getDrivers() {
+    public Set<Drivers<?>> getDrivers() {
         return drivers;
     }
 
-    public List<Sponsor<?>> getSponsors() {
+    public Set<Sponsor<?>> getSponsors() {
         return sponsors;
     }
 
-    public List<Mechanic<?>> getMechanics() {
+    public Set<Mechanic<?>> getMechanics() {
         return mechanics;
     }
 

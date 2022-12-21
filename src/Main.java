@@ -27,8 +27,10 @@ public class Main {
         Mechanic<Buses> vasiliy = new Mechanic<Buses>("Василий", "Сергеев", "Агат");
         MAN.addDriver(new DriverD<>("Петров Василий Иванович", "yes", 16, new CategoryD()));
         Sponsor rosneft = new Sponsor<>("Rosneft", 4_500_000);
+        Sponsor rosneft1 = new Sponsor<>("Rosneft", 4_500_000);
         MAN.addMechanic(vasiliy);
         MAN.addSponsor(rosneft);
+        MAN.addSponsor(rosneft1);
 
         Trucks kamAz = new Trucks("КамАз", "6520", 4.0f, Weight.N1);
         Mechanic<Buses> petr = new Mechanic<>("Петр", "Николаев", "Авто-Трап");

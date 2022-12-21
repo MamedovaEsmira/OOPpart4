@@ -1,5 +1,7 @@
 package carRase;
 
+import java.util.Objects;
+
 public class PassengerCars extends Transport{
 
     private BodyType bodyType;
@@ -71,6 +73,20 @@ public class PassengerCars extends Transport{
     @Override
     public void maxSpeed() {
         System.out.printf("Максимальная скорость автомобиля  %s %s  составила: %.1f км/ч.\n", getBrand(), getModel(), (100 + Math.random() * 200));
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        PassengerCars that = (PassengerCars) o;
+        return service == that.service && bodyType == that.bodyType;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), bodyType, service);
     }
 }
 
